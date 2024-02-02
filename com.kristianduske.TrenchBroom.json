@@ -1,7 +1,7 @@
 {
     "app-id": "com.kristianduske.TrenchBroom",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15-22.08",
+    "runtime-version": "5.15-23.08",
     "sdk": "org.kde.Sdk",
     "command": "trenchbroom.sh",
     "rename-icon": "trenchbroom",
@@ -77,19 +77,91 @@
             ]
         },
         {
+            "name": "assimp",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/assimp/assimp.git",
+                    "commit": "6a08c39e3a91ef385e76515cfad86aca4bfd57ff",
+                    "tag": "v5.3.1"
+                }
+            ]
+        },
+        {
+            "name": "catch2",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/catchorg/Catch2.git",
+                    "commit": "216713a4066b79d9803d374f261ccb30c0fb451f",
+                    "tag": "v2.13.8"
+                }
+            ]
+        },
+        {
+            "name": "fmt",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/fmtlib/fmt.git",
+                    "commit": "7bdf0628b1276379886c7f6dda2cef2b3b374f0b",
+                    "tag": "7.1.3"
+                }
+            ]
+        },
+        "shared-modules/glew/glew.json",
+        {
+            "name": "miniz",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/richgel999/miniz.git",
+                    "commit": "cb97387d20909c0a4728972fd0f19bfacd083c42",
+                    "tag": "2.2.0"
+                }
+            ]
+        },
+        {
+            "name": "tinyxml2",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/leethomason/tinyxml2.git",
+                    "commit": "1dee28e51f9175a31955b9791c74c430fe13dc82",
+                    "tag": "9.0.0"
+                }
+            ]
+        },
+        {
             "name": "trenchbroom",
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=Release",
-                "-DOpenGL_GL_PREFERENCE=GLVND"
+                "-DOpenGL_GL_PREFERENCE=GLVND",
+                "-DCMAKE_PREFIX_PATH=cmake/packages"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/kduske/TrenchBroom.git",
-                    "commit": "79b5eb27f0f70fb17bc9b2072ea70607d6f7760f",
-                    "tag": "v2023.1"
+                    "commit": "751acb302d994b20153918fbd236eec37ff2a889",
+                    "disable-submodules": true,
+                    "tag": "v2024.1-RC1"
+                },
+                {
+                    "type": "patch",
+                    "path": "cmake-patch.patch"
                 }
             ]
         },

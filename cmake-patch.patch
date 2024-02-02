@@ -1,0 +1,27 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9e13d78..af60ba7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,9 +16,6 @@ if(POLICY CMP0063)
+   cmake_policy(SET CMP0063 NEW)
+ endif()
+ 
+-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake")
+-set(VCPKG_OVERLAY_PORTS "${CMAKE_SOURCE_DIR}/vcpkg-overlay-ports/freeimage;${CMAKE_SOURCE_DIR}/vcpkg-overlay-ports/openexr")
+-
+ set(CMAKE_C_VISIBILITY_PRESET hidden)
+ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+ set(CMAKE_VISIBILITY_INLINES_HIDDEN TRUE)
+diff --git a/app/CMakeLists.txt b/app/CMakeLists.txt
+index 2731308..5e79ef8 100644
+--- a/app/CMakeLists.txt
++++ b/app/CMakeLists.txt
+@@ -348,7 +348,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+     set(LINUX_TARGET_RESOURCE_DIRECTORY ${CPACK_PACKAGING_INSTALL_PREFIX}/${LINUX_RESOURCE_LOCATION})
+ 
+     # add mime type definitions
+-    install(FILES "${APP_DIR}/resources/linux/trenchbroom.xml" DESTINATION "${CPACK_PACKAGING_INSTALL_PREFIX}/share/mime/packages/" COMPONENT TrenchBroom)
++    install(FILES "${APP_DIR}/resources/linux/trenchbroom.xml" DESTINATION "share/mime/packages/" COMPONENT TrenchBroom)
+ 
+     # configure install scripts
+     configure_file(${APP_DIR}/resources/linux/postinst ${CMAKE_CURRENT_BINARY_DIR}/linux/postinst @ONLY)
